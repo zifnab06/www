@@ -1,0 +1,37 @@
+zifnab06.net:80, zifnab.net:80, www.zifnab.net:80 zifnab-www.fly.dev:80 {
+        root * /var/www/zifnab.net
+        file_server
+        @user_home path_regexp user ^/~([^/]+)(/.*)?$
+        handle @user_home {
+                redir /~{re.user.1} /~{re.user.1}/ permanent
+
+                root * /var/www/public_html/{re.user.1}/
+                rewrite * {re.user.2}
+                file_server browse {
+                        hide .[A-Za-z]*
+                }
+        }
+}
+
+waffles.fun:80 {
+        root * /var/www/waffles.fun
+        file_server {
+                index index.gif index.html
+        }
+}
+
+sexypenguins.at:80 {
+        root * /var/www/sexypenguins.at
+        file_server
+}
+
+undocumented.software:80 {
+        root * /var/www/undocumented.software
+        file_server
+}
+
+powell.io:80 {
+        root * /var/www/powell.io
+        file_server
+}
+
